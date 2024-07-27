@@ -1,73 +1,67 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Job Scheduler Microservice
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This is a job scheduler microservice built with NestJS that allows for scheduling and managing jobs. The service includes API endpoints for creating, listing, and retrieving job details. The jobs can be customized and scheduled with flexible configurations.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Features
 
-## Description
+- **Job Scheduling**: Schedule customized jobs with various configurations.
+- **API Endpoints**:
+  - `GET /jobs`: List all available jobs.
+  - `GET /jobs/:id`: Retrieve details of a specific job by ID.
+  - `POST /jobs`: Create new jobs.
+- **Database Integration**: Store job-related information such as job name, timestamps, and scheduling details.
+- **Customization**: Define specific attributes, scheduling intervals, and parameters for each job.
+- **Scalability**: Designed to handle increased complexity and scale for global usage.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## API Documentation using swagger
+
+This's url for swagger service and you can
+
+```
+http://localhost:{your-port}/api
+```
+
+## start and run project using docker
+
+create `.env` file and add configuration like this for application and database
+
+```
+#App
+NODE_ENV={production,development..etc}
+PORT={port}
+
+#Database Production
+POSTGRES_HOST={database host}
+POSTGRES_DATABASE={database name}
+POSTGRES_USERNAME={database username}
+POSTGRES_PASSWORD={database password}
+POSTGRES_PORT={database port}
+SSL=false
+REJECT_UNAUTHORIZED=false
+```
+
+and run
+
+```
+docker-compose up --build
+```
+
+## Technologies Used
+
+- **Language**: TypeScript
+- **Framework**: NestJS
+- **Database**: PostgreSQL
+- **Testing**: Jest
 
 ## Installation
 
-```bash
-$ npm install
-```
-
-## Running the app
+**Clone the repository**:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+git clone https://github.com/BugsBountyHunter/job-scheduler.git
+cd job-scheduler
 ```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+MIT
