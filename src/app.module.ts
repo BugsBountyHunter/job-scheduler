@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { AppController } from '@app/app.controller';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { typeOrmModuleOptions } from '@app/config/orm.config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { LoggerModule as PinoLoggerModule } from 'nestjs-pino';
+import { AppService } from '@app/app.service';
+import { typeOrmModuleOptions } from '@app/config/orm.config';
+import { JobsModule } from '@app/modules/jobs/jobs.module';
+import { SchedulerModule } from '@app/modules/scheduler/scheduler.module';
 
 @Module({
   imports: [
@@ -21,6 +23,8 @@ import { LoggerModule as PinoLoggerModule } from 'nestjs-pino';
         },
       },
     }),
+    JobsModule,
+    SchedulerModule,
   ],
   controllers: [AppController],
   providers: [AppService],
