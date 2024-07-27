@@ -13,12 +13,13 @@ This is a job scheduler microservice built with NestJS that allows for schedulin
 - **Customization**: Define specific attributes, scheduling intervals, and parameters for each job.
 - **Scalability**: Designed to handle increased complexity and scale for global usage.
 
-## Technologies Used
+## API Documentation using swagger
 
-- **Language**: TypeScript
-- **Framework**: NestJS
-- **Database**: PostgreSQL
-- **Testing**: Jest
+This's url for swagger service and you can
+
+```
+http://localhost:{your-port}/api
+```
 
 ## start and run project using docker
 
@@ -45,6 +46,13 @@ and run
 docker-compose up --build
 ```
 
+## Technologies Used
+
+- **Language**: TypeScript
+- **Framework**: NestJS
+- **Database**: PostgreSQL
+- **Testing**: Jest
+
 ## Installation
 
 **Clone the repository**:
@@ -53,3 +61,7 @@ docker-compose up --build
 git clone https://github.com/BugsBountyHunter/job-scheduler.git
 cd job-scheduler
 ```
+
+## License
+
+MIT
