@@ -14,6 +14,11 @@ export class JobsService {
     private readonly schedulerService: SchedulerService,
   ) {}
 
+  /**
+   * Create a new job
+   * @param createJobDto
+   * @returns - IResponse<Job>
+   */
   async create(createJobDto: CreateJobDto) {
     const savedJob = await this.jobsRepository.save(createJobDto);
     this.schedulerService.scheduleJob(savedJob);
@@ -23,6 +28,10 @@ export class JobsService {
     };
   }
 
+  /**
+   *  Get all jobs
+   * @returns - IResponse<Job[]>
+   */
   async findAll() {
     const jobs = await this.jobsRepository.find();
     return <IResponse<Job[]>>{
@@ -31,6 +40,11 @@ export class JobsService {
     };
   }
 
+  /**
+   * Get job by ID
+   * @param id
+   * @returns - IResponse<Job>
+   */
   async findOne(id: number) {
     const job = await this.jobsRepository.findOne({ where: { id } });
     return <IResponse<Job>>{
