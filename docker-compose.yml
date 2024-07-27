@@ -1,0 +1,38 @@
+services:
+  job-scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: devahmedsr/job-scheduler:lts
+    restart: always
+    ports:
+      - '8000:3000'
+    depends_on:
+      - db
+    volumes:
+      - ./src:/job-scheduler/src
+
+  db:
+    image: postgres:13
+    container_name: db
+    restart: always
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: job-scheduler-db
+    ports:
+      - '25060:5432'
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    container_name: job-scheduler-pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: pgadmin4
+    ports:
+      - '5050:80'
+    depends_on:
+      - db
