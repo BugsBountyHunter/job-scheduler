@@ -9,6 +9,7 @@ import helmet from 'helmet';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import httpToCurl from 'http-to-curl';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 httpToCurl();
 
 async function bootstrap() {
@@ -23,6 +24,13 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
 
   app.use(helmet());
+  const config = new DocumentBuilder()
+    .setTitle('Job Scheduler API')
+    .setDescription('API documentation for the Job Scheduler microservice')
+    .setVersion('1.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
 
   // enable cors
   app.enableCors();
